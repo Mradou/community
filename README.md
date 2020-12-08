@@ -11,6 +11,7 @@
 
 [Github OAuth文档](https://docs.github.com/cn/free-pro-team@latest/developers/apps/building-oauth-apps)
 
+[okhttp(用于GitHub登录)](https://square.github.io/okhttp/#post-to-a-server)
 
 ## 工具
 [Git](https://git-scm.com/download)
