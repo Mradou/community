@@ -1,11 +1,18 @@
 ## 阿兜社区
 
 ## 资料
-https://spring.io/guides
+[spring文档](https://spring.io/guides) 
 
-https://spring.io/guides/gs/serving-web-content/
+[spring web文档](https://spring.io/guides/gs/serving-web-content/)
 
-https://elasticsearch.cn/explore
+[es社区](https://elasticsearch.cn/explore)
+
+[Bootstrap](https://v3.bootcss.com/)
+
+[Github OAuth文档](https://docs.github.com/cn/free-pro-team@latest/developers/apps/building-oauth-apps)
+
 
 ## 工具
-https://git-scm.com/download
+[Git](https://git-scm.com/download)
+
+[Visual Paradigm](https://www.visual-paradigm.com)
