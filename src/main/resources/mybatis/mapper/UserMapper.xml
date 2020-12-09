@@ -5,4 +5,8 @@
     <insert id="save" parameterType="user">
         insert into user values (null, #{account_id}, #{name}, #{token}, #{gmt_create}, #{gmt_modified})
     </insert>
+
+    <select id="findUserByToken" resultType="user" parameterType="user">
+        select * from user where token = #{token}
+    </select>
 </mapper>
