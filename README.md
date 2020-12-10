@@ -17,3 +17,22 @@
 [Git](https://git-scm.com/download)
 
 [Visual Paradigm](https://www.visual-paradigm.com)
+
+## 脚本
+[question表的sql]
+```sql 
+CREATE TABLE `community`.`Untitled`  (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `title` varchar(50) NULL,
+  `description` text NULL,
+  `gmt_create` bigint NULL,
+  `gmt_modified` bigint NULL,
+  `creator` int NOT NULL,
+  `comment_count` int NULL DEFAULT 0,
+  `view_count` int NULL DEFAULT 0,
+  `like_count` int NULL DEFAULT 0,
+  `tag` varchar(256) NULL,
+  PRIMARY KEY (`id`)
+);
+```
+
