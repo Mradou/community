@@ -9,4 +9,8 @@
     <select id="findUserByToken" resultType="user" parameterType="user">
         select * from user where token = #{token}
     </select>
+
+    <select id="findUserById" parameterType="int" resultType="user">
+        select * from user where id = #{creator}
+    </select>
 </mapper>

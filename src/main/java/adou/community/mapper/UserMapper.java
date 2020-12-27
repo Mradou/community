@@ -10,4 +10,6 @@ public interface UserMapper {
     void save(User user);
 
     User findUserByToken(String token);
+
+    User findUserById(Integer creator);
 }
