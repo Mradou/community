@@ -1,5 +1,6 @@
 package adou.community.controller;
 
+import adou.community.dto.PageDTO;
 import adou.community.dto.QuestionDTO;
 import adou.community.mapper.UserMapper;
 import adou.community.model.User;
@@ -25,7 +26,9 @@ public class IndexController {
 
     @GetMapping("/")
     public String hello(HttpServletRequest request,
-                        Model model) {
+                        Model model,
+                        @RequestParam(name = "currentPage", defaultValue = "1") Integer currentPage,
+                        @RequestParam(name = "size", defaultValue = "5") Integer size) {
         Cookie[] cookies = request.getCookies();
         if (cookies != null && cookies.length != 0) {
             for (Cookie cookie : cookies) {
@@ -41,8 +44,8 @@ public class IndexController {
             }
         }
 
-        List<QuestionDTO> questionDTOList = questionService.list();
-        model.addAttribute("questionDTOList",questionDTOList);
+        PageDTO pageDTO = questionService.list(currentPage, size);
+        model.addAttribute("pageDTO", pageDTO);
         return "index";
     }
 }

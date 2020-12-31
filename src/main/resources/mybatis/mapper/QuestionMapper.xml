@@ -7,7 +7,11 @@
         (#{title}, #{description}, #{gmt_create}, #{gmt_modified}, #{creator}, #{tag})
     </insert>
 
-    <select id="list" resultType="question">
-        select * from question
+    <select id="list" resultType="question" parameterType="int">
+        select * from question limit #{offset},#{size}
+    </select>
+
+    <select id="totalCount" resultType="int">
+        select count(*) from question
     </select>
 </mapper>

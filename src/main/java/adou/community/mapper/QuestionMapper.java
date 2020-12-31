@@ -8,5 +8,7 @@ public interface QuestionMapper {
 
     void save(Question question);
 
-    List<Question> list();
+    List<Question> list(Integer offset, Integer size);
+
+    Integer totalCount();
 }
