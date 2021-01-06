@@ -11,4 +11,8 @@ public interface QuestionMapper {
     List<Question> list(Integer offset, Integer size);
 
     Integer totalCount();
+
+    List<Question> listByUid(Integer uid, Integer offset, Integer size);
+
+    Integer totalCountByUid(Integer uid);
 }
