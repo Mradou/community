@@ -12,4 +12,8 @@ public interface UserMapper {
     User findUserByToken(String token);
 
     User findUserById(Integer creator);
+
+    User findUserByAccount_id(String account_id);
+
+    void update(User dbUser);
 }

@@ -13,4 +13,12 @@
     <select id="findUserById" parameterType="int" resultType="user">
         select * from user where id = #{creator}
     </select>
+
+    <select id="findUserByAccount_id" parameterType="String" resultType="user">
+        select * from user where account_id = #{account_id}
+    </select>
+
+    <update id="update" parameterType="user">
+        update user set name = #{name}, token = #{token}, gmt_modified = #{gmt_modified}, avatar_url = #{avatar_url} where id = #{id}
+    </update>
 </mapper>
