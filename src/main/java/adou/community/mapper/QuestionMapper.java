@@ -1,5 +1,6 @@
 package adou.community.mapper;
 
+import adou.community.dto.QuestionDTO;
 import adou.community.model.Question;
 
 import java.util.List;
@@ -15,4 +16,7 @@ public interface QuestionMapper {
     List<Question> listByUid(Integer uid, Integer offset, Integer size);
 
     Integer totalCountByUid(Integer uid);
+
+    Question getById(Integer id);
 }
+

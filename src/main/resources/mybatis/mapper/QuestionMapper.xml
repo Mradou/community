@@ -22,4 +22,8 @@
     <select id="totalCountByUid" resultType="int">
         select count(1) from question where creator = #{uid}
     </select>
+
+    <select id="getById" parameterType="int" resultType="question">
+        select * from question where id = #{id}
+    </select>
 </mapper>
