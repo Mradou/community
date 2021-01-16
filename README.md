@@ -54,5 +54,9 @@ CREATE TABLE `community`.`Untitled`  (
   PRIMARY KEY (`id`)
 );
 ```
+```bash
+这将运行MBG，并指示其覆盖可能找到的所有现有Java文件
+mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate
+```
 
 

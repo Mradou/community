@@ -54,11 +54,11 @@ public class AuthorizeController {
             User user = new User();
             String token = String.valueOf(UUID.randomUUID());
             user.setToken(token);
-            user.setAccount_id(String.valueOf(githubUser.getId()));
+            user.setAccountId(String.valueOf(githubUser.getId()));
             user.setName(githubUser.getName());
-            user.setGmt_create(System.currentTimeMillis());
-            user.setGmt_modified(System.currentTimeMillis());
-            user.setAvatar_url(githubUser.getAvatar_url()); //git用户头像的url
+            user.setGmtCreate(System.currentTimeMillis());
+            user.setGmtModified(System.currentTimeMillis());
+            user.setAvatarUrl(githubUser.getAvatar_url()); //git用户头像的url
             userService.createOrUpdate(user);
             //把token写入cookie
             response.addCookie(new Cookie("token",token));

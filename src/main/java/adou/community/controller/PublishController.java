@@ -1,8 +1,10 @@
 package adou.community.controller;
 
+import adou.community.dto.QuestionDTO;
 import adou.community.mapper.QuestionMapper;
 import adou.community.model.Question;
 import adou.community.model.User;
+import adou.community.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +16,18 @@ import javax.servlet.http.HttpServletRequest;
 public class PublishController {
 
     @Autowired
-    private QuestionMapper questionMapper;
+    private QuestionService questionService;
+
+    @GetMapping("/publish/{id}")
+    public String edit(@PathVariable("id") Integer id,
+                       Model model){
+        QuestionDTO question = questionService.getById(id);
+        model.addAttribute("title",question.getTitle());
+        model.addAttribute("description",question.getDescription());
+        model.addAttribute("tag",question.getTag());
+        model.addAttribute("id",question.getId());
+        return "publish";
+    }
 
     @GetMapping("/publish")
     public String publish() {
@@ -26,6 +39,7 @@ public class PublishController {
             @RequestParam("title") String title,
             @RequestParam("description") String description,
             @RequestParam("tag") String tag,
+            @RequestParam("id") Integer id,
             HttpServletRequest request,
             Model model) {
         //拿到user对象
@@ -56,11 +70,9 @@ public class PublishController {
         question.setTitle(title);
         question.setTag(tag);
         question.setDescription(description);
-        question.setGmt_create(System.currentTimeMillis());
-        question.setGmt_modified(System.currentTimeMillis());
         question.setCreator(user.getId());
-        questionMapper.save(question);
-
+        question.setId(id);
+        questionService.createOrUpdate(question);
 
         return "redirect:/";
     }

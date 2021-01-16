@@ -19,7 +19,7 @@
             <div class="media" th:each="questionDTO : ${pageDTO.questionDTOList}">
                 <div class="media-left">
                     <a href="#">
-                        <img class="media-object img-rounded" th:src="${questionDTO.user.getAvatar_url()}" alt="...">
+                        <img class="media-object img-rounded" th:src="${questionDTO.user.getAvatarUrl()}" alt="...">
                     </a>
                 </div>
                 <div class="media-body">
@@ -27,9 +27,9 @@
                         <a th:href="@{'/question/'+${questionDTO.id}}" th:text="${questionDTO.getTitle()}">标题</a>
                     </h4>
                     <span th:text="${questionDTO.getDescription()}">测试</span>
-                    <span class="text-desc">• <span th:text="${questionDTO.getComment_count()}">1</span> 个回复
-                        • <span th:text="${questionDTO.getView_count()}">1</span> 次浏览 •
-                        <span th:text="${#dates.format(questionDTO.getGmt_create(),'yyyy-MM-dd')}">日期</span></span>
+                    <span class="text-desc">• <span th:text="${questionDTO.getCommentCount()}">1</span> 个回复
+                        • <span th:text="${questionDTO.getViewCount()}">1</span> 次浏览 •
+                        <span th:text="${#dates.format(questionDTO.getGmtCreate(),'yyyy-MM-dd')}">日期</span></span>
                 </div>
             </div>
             <nav aria-label="Page navigation">
