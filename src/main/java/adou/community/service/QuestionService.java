@@ -2,6 +2,8 @@ package adou.community.service;
 
 import adou.community.dto.PageDTO;
 import adou.community.dto.QuestionDTO;
+import adou.community.exception.CustomizeErrorCode;
+import adou.community.exception.CustomizeException;
 import adou.community.mapper.QuestionMapper;
 import adou.community.mapper.UserMapper;
 import adou.community.model.Question;
@@ -27,7 +29,7 @@ public class QuestionService {
     public PageDTO list(Integer currentPage, Integer size) {
 
         //将Question和User封装到QuestionDTOList中，用于展示
-        Integer totalCount = (int)questionMapper.countByExample(new QuestionExample()); //总条数
+        Integer totalCount = (int) questionMapper.countByExample(new QuestionExample()); //总条数
         Integer totalPage;//总页数
         //计算总页数
         if (totalCount % size == 0) {
@@ -67,7 +69,7 @@ public class QuestionService {
         QuestionExample questionExample = new QuestionExample();
         questionExample.createCriteria()
                 .andCreatorEqualTo(uid);
-        Integer totalCount = (int)questionMapper.countByExample(questionExample); //总条数
+        Integer totalCount = (int) questionMapper.countByExample(questionExample); //总条数
         Integer totalPage;//总页数
         //计算总页数
         if (totalCount % size == 0) {
@@ -106,6 +108,9 @@ public class QuestionService {
 
     public QuestionDTO getById(Integer id) {
         Question question = questionMapper.selectByPrimaryKey(id);
+        if (question == null) {
+            throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
+        }
         QuestionDTO questionDTO = new QuestionDTO();
         BeanUtils.copyProperties(question, questionDTO);
         User user = userMapper.selectByPrimaryKey(question.getCreator());
@@ -129,8 +134,10 @@ public class QuestionService {
             QuestionExample questionExample = new QuestionExample();
             questionExample.createCriteria()
                     .andIdEqualTo(question.getId());
-            questionMapper.updateByExampleSelective(updateQuestion, questionExample);
-
+            int update = questionMapper.updateByExampleSelective(updateQuestion, questionExample);
+            if(update==0){
+                throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
+            }
         }
     }
 }
