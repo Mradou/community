@@ -22,11 +22,14 @@
 
 [Visual Paradigm](https://www.visual-paradigm.com)
 
+[postman](https://chrome.google.com/webstore/detail/tabbed-postman-rest-clien/coohjcphdfgbiolnekdpbcijmhambjff)
+
 
 ## 脚本
+
 [question表的sql]
 ```sql 
-CREATE TABLE `question` (
+CREATE TABLE `community`.`question` (
   `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(50) NULL,
   `description` text NULL,
@@ -43,7 +46,7 @@ CREATE TABLE `question` (
 
 [user表的sql]
 ```sql
-CREATE TABLE `user`  (
+CREATE TABLE `community`.`user`  (
   `id` int(11) NOT NULL,
   `account_id` varchar(100) NULL,
   `name` varchar(50) NULL,
@@ -57,7 +60,7 @@ CREATE TABLE `user`  (
 
 [comment表的sql]
 ```sql
-CREATE TABLE `comment`  (
+CREATE TABLE `community`.`comment`  (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `parent_id` bigint NOT NULL COMMENT '父类id',
   `type` int NOT NULL COMMENT '父类类型',
@@ -65,6 +68,7 @@ CREATE TABLE `comment`  (
   `gmt_create` bigint NOT NULL COMMENT '创建时间',
   `gmt_modified` bigint NOT NULL COMMENT '更新时间',
   `like_count` int NOT NULL DEFAULT 0 COMMENT '点赞数',
+  `content` varchar NOT NULL COMMENT '评论内容',
   PRIMARY KEY (`id`)
 );
 ```
