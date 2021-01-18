@@ -4,6 +4,7 @@ import adou.community.dto.PageDTO;
 import adou.community.dto.QuestionDTO;
 import adou.community.exception.CustomizeErrorCode;
 import adou.community.exception.CustomizeException;
+import adou.community.mapper.QuestionExtMapper;
 import adou.community.mapper.QuestionMapper;
 import adou.community.mapper.UserMapper;
 import adou.community.model.Question;
@@ -25,6 +26,8 @@ public class QuestionService {
     private UserMapper userMapper;
     @Resource
     private QuestionMapper questionMapper;
+    @Resource
+    private QuestionExtMapper questionExtMapper;
 
     public PageDTO list(Integer currentPage, Integer size) {
 
@@ -135,9 +138,16 @@ public class QuestionService {
             questionExample.createCriteria()
                     .andIdEqualTo(question.getId());
             int update = questionMapper.updateByExampleSelective(updateQuestion, questionExample);
-            if(update==0){
+            if (update == 0) {
                 throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
             }
         }
+    }
+
+    public void incView(Integer id) {
+        Question question = new Question();
+        question.setId(id);
+        question.setViewCount(1);
+        questionExtMapper.incView(question);
     }
 }

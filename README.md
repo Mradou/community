@@ -26,7 +26,7 @@
 ## 脚本
 [question表的sql]
 ```sql 
-CREATE TABLE `community`.`Untitled`  (
+CREATE TABLE `question` (
   `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(50) NULL,
   `description` text NULL,
@@ -43,7 +43,7 @@ CREATE TABLE `community`.`Untitled`  (
 
 [user表的sql]
 ```sql
-CREATE TABLE `community`.`Untitled`  (
+CREATE TABLE `user`  (
   `id` int(11) NOT NULL,
   `account_id` varchar(100) NULL,
   `name` varchar(50) NULL,
@@ -51,6 +51,20 @@ CREATE TABLE `community`.`Untitled`  (
   `gmt_create` bigint(20) NULL,
   `gmt_modified` bigint(20) NULL,
   `picture_url` varchar(100) NULL,
+  PRIMARY KEY (`id`)
+);
+```
+
+[comment表的sql]
+```sql
+CREATE TABLE `comment`  (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `parent_id` bigint NOT NULL COMMENT '父类id',
+  `type` int NOT NULL COMMENT '父类类型',
+  `commentor` int NOT NULL COMMENT '评论人id',
+  `gmt_create` bigint NOT NULL COMMENT '创建时间',
+  `gmt_modified` bigint NOT NULL COMMENT '更新时间',
+  `like_count` int NOT NULL DEFAULT 0 COMMENT '点赞数',
   PRIMARY KEY (`id`)
 );
 ```
