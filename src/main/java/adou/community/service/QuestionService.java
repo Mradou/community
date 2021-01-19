@@ -67,7 +67,7 @@ public class QuestionService {
     }
 
 
-    public PageDTO listByUid(Integer uid, Integer currentPage, Integer size) {
+    public PageDTO listByUid(Long uid, Integer currentPage, Integer size) {
         //将Question和User封装到QuestionDTOList中，用于展示
         QuestionExample questionExample = new QuestionExample();
         questionExample.createCriteria()
@@ -109,7 +109,7 @@ public class QuestionService {
         return pageDTO;
     }
 
-    public QuestionDTO getById(Integer id) {
+    public QuestionDTO getById(Long id) {
         Question question = questionMapper.selectByPrimaryKey(id);
         if (question == null) {
             throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
@@ -144,7 +144,7 @@ public class QuestionService {
         }
     }
 
-    public void incView(Integer id) {
+    public void incView(Long id) {
         Question question = new Question();
         question.setId(id);
         question.setViewCount(1);

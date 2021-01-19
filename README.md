@@ -30,12 +30,12 @@
 [question表的sql]
 ```sql 
 CREATE TABLE `community`.`question` (
-  `id` int NOT NULL AUTO_INCREMENT,
+  `id` bigint NOT NULL AUTO_INCREMENT,
   `title` varchar(50) NULL,
   `description` text NULL,
   `gmt_create` bigint NULL,
   `gmt_modified` bigint NULL,
-  `creator` int NOT NULL,
+  `creator` bigint NOT NULL,
   `comment_count` int NULL DEFAULT 0,
   `view_count` int NULL DEFAULT 0,
   `like_count` int NULL DEFAULT 0,
@@ -47,7 +47,7 @@ CREATE TABLE `community`.`question` (
 [user表的sql]
 ```sql
 CREATE TABLE `community`.`user`  (
-  `id` int(11) NOT NULL,
+  `id` bigint NOT NULL,
   `account_id` varchar(100) NULL,
   `name` varchar(50) NULL,
   `token` varchar(100) NULL,
@@ -64,7 +64,7 @@ CREATE TABLE `community`.`comment`  (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `parent_id` bigint NOT NULL COMMENT '父类id',
   `type` int NOT NULL COMMENT '父类类型',
-  `commentor` int NOT NULL COMMENT '评论人id',
+  `commentor` bigint NOT NULL COMMENT '评论人id',
   `gmt_create` bigint NOT NULL COMMENT '创建时间',
   `gmt_modified` bigint NOT NULL COMMENT '更新时间',
   `like_count` int NOT NULL DEFAULT 0 COMMENT '点赞数',
