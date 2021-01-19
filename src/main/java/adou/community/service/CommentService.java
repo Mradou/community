@@ -10,6 +10,7 @@ import adou.community.model.Comment;
 import adou.community.model.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 
@@ -23,6 +24,7 @@ public class CommentService {
     @Resource
     private QuestionExtMapper questionExtMapper;
 
+    @Transactional
     public void insert(Comment comment) {
         if (comment.getParentId() == null || comment.getParentId() == 0) {
             throw new CustomizeException(CustomizeErrorCode.TARGET_PARAM_NOT_FOUND);

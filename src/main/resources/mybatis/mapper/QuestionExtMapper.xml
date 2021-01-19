@@ -40,7 +40,7 @@
         update
         question
         set
-        comment_count = comment_count + #{commentCount,jdbcType=INTEGER}
+        comment_count = comment_count + #{commentCount2,jdbcType=INTEGER}
         where
         id = #{id}
     </update>
