@@ -2,13 +2,22 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>阿兜社区</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="css/community.css">
     <script src="js/jquery-3.1.1.min.js"></script>
-    <script src="js/bootstrap.min.js" ></script>
+    <script src="js/bootstrap.min.js"></script>
 </head>
+<script>
+    window.onload = function () {
+        const closable = window.localStorage.getItem("closable");
+        if(closable == "true"){
+            window.close();
+            window.localStorage.removeItem("closable");
+        }
+    }
+</script>
 <body>
 <div th:insert="~{navigation :: header}"></div> <!--引入导航头-->
 <div class="container-fluid main">
@@ -23,7 +32,7 @@
                     </a>
                 </div>
                 <div class="media-body">
-                    <h4 class="media-heading" >
+                    <h4 class="media-heading">
                         <a th:href="@{'/question/'+${questionDTO.id}}" th:text="${questionDTO.getTitle()}">标题</a>
                     </h4>
                     <span th:text="${questionDTO.getDescription()}">测试</span>
@@ -38,7 +47,8 @@
                         <a href="/?currentPage=1" aria-label="Previous" th:if="${pageDTO.showFirst}">
                             <span aria-hidden="true">&lt;&lt;</span>
                         </a>
-                        <a th:href="@{'?currentPage='+${pageDTO.currentPage -1}}" aria-label="Previous" th:if="${pageDTO.showPre}">
+                        <a th:href="@{'?currentPage='+${pageDTO.currentPage -1}}" aria-label="Previous"
+                           th:if="${pageDTO.showPre}">
                             <span aria-hidden="true">&lt;</span>
                         </a>
                     </li>
@@ -47,10 +57,12 @@
                         <a th:href="@{'?currentPage='+${currentPage}}" th:text="${currentPage}">页码</a>
                     </li>
                     <li>
-                        <a th:href="@{'?currentPage='+${pageDTO.currentPage+1}}" aria-label="Next" th:if="${pageDTO.showNext}">
+                        <a th:href="@{'?currentPage='+${pageDTO.currentPage+1}}" aria-label="Next"
+                           th:if="${pageDTO.showNext}">
                             <span aria-hidden="true">&gt;</span>
                         </a>
-                        <a th:href="@{'?currentPage='+${pageDTO.totalPage}}" aria-label="Next" th:if="${pageDTO.showEnd}">
+                        <a th:href="@{'?currentPage='+${pageDTO.totalPage}}" aria-label="Next"
+                           th:if="${pageDTO.showEnd}">
                             <span aria-hidden="true">&gt;&gt;</span>
                         </a>
                     </li>

@@ -38,7 +38,7 @@ public class PublishController {
             @RequestParam("title") String title,
             @RequestParam("description") String description,
             @RequestParam("tag") String tag,
-            @RequestParam("id") Long id,
+            @RequestParam(value = "id",required = false) Long id,
             HttpServletRequest request,
             Model model) {
         //拿到user对象

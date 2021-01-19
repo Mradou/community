@@ -9,12 +9,15 @@ body{
 
 .btn-publish{
     float: right;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .media-object{
     width: 41px;
     height: 41px;
+}
+.media-body{
+    padding-top: 12px;
 }
 
 .text-desc{
@@ -34,4 +37,47 @@ body{
 
 .jumbotron{
     margin: 50px;
+}
+
+.comment{
+    margin: 11px 0;
+}
+
+.edit{
+    float: right;
+}
+
+.comment_sp{
+    margin-top: 0;
+}
+
+.commentCount{
+    margin-left: 15px;
+}
+
+
+
+.question_description{
+    margin-left: -12px;
+}
+
+.menu{
+    color: #999;
+    margin-top: 5px;
+}
+
+.menu .icon{
+    font-size: 15px;
+    margin-right: 6px;
+    cursor: pointer;
+}
+
+.menu .icon:hover{
+    color: #499ef3;
+}
+
+.comments{
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
 }

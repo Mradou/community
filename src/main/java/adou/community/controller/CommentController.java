@@ -1,9 +1,8 @@
 package adou.community.controller;
 
-import adou.community.dto.CommentDTO;
+import adou.community.dto.CommentCreateDTO;
 import adou.community.dto.ResultDTO;
 import adou.community.exception.CustomizeErrorCode;
-import adou.community.mapper.CommentMapper;
 import adou.community.model.Comment;
 import adou.community.model.User;
 import adou.community.service.CommentService;
@@ -15,8 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
-import java.util.Map;
 
 @Controller
 public class CommentController {
@@ -26,7 +23,7 @@ public class CommentController {
 
     @RequestMapping(value = "/comment", method = RequestMethod.POST)
     @ResponseBody
-    public Object post(@RequestBody CommentDTO commentDTO,
+    public Object post(@RequestBody CommentCreateDTO commentCreateDTO,
                        HttpServletRequest request) {
         User user = (User) request.getSession().getAttribute("user");
         if (user == null) {
@@ -34,9 +31,9 @@ public class CommentController {
         }
 
         Comment comment = new Comment();
-        comment.setParentId(commentDTO.getParentId());
-        comment.setType(commentDTO.getType());
-        comment.setContent(commentDTO.getContent());
+        comment.setParentId(commentCreateDTO.getParentId());
+        comment.setType(commentCreateDTO.getType());
+        comment.setContent(commentCreateDTO.getContent());
         comment.setCommentor(user.getId());
         comment.setLikeCount(0);
         comment.setGmtCreate(System.currentTimeMillis());
