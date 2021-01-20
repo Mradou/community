@@ -51,14 +51,8 @@ body{
     margin-top: 0;
 }
 
-.commentCount{
-    margin-left: 15px;
-}
-
-
-
 .question_description{
-    margin-left: -12px;
+    margin-left: -8px;
 }
 
 .menu{
@@ -80,4 +74,8 @@ body{
     padding-bottom: 5px;
     margin-bottom: 15px;
     border-bottom: 1px solid #eee;
+}
+
+.question_title{
+    margin-top: 25px;
 }
