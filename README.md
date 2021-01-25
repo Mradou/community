@@ -67,8 +67,9 @@ CREATE TABLE `community`.`comment`  (
   `commentor` bigint NOT NULL COMMENT '评论人id',
   `gmt_create` bigint NOT NULL COMMENT '创建时间',
   `gmt_modified` bigint NOT NULL COMMENT '更新时间',
-  `like_count` int NOT NULL DEFAULT 0 COMMENT '点赞数',
+  `like_count` int DEFAULT 0 COMMENT '点赞数',
   `content` varchar NOT NULL COMMENT '评论内容',
+  `comment_count` int DEFAULT 0 COMMENT '评论数',
   PRIMARY KEY (`id`)
 );
 ```

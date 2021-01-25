@@ -1,8 +1,8 @@
 package adou.community.controller;
 
-import adou.community.dto.CommentCreateDTO;
 import adou.community.dto.CommentDTO;
 import adou.community.dto.QuestionDTO;
+import adou.community.enums.CommentTypeEnum;
 import adou.community.service.CommentService;
 import adou.community.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,10 +26,12 @@ public class QuestionController {
     public String question(@PathVariable(name = "id")Long id, Model model){
 
         QuestionDTO questionDTO = questionService.getById(id);
-        List<CommentDTO> comments = commentService.listByQuestionId(id);
+        List<QuestionDTO> relatedQuestions = questionService.selectRelated(questionDTO);
+        List<CommentDTO> comments = commentService.listByTargetId(id, CommentTypeEnum.QUESTION);
         questionService.incView(id);//浏览数功能
         model.addAttribute("question",questionDTO);
         model.addAttribute("comments",comments);
+        model.addAttribute("relatedQuestions",relatedQuestions);
         return "question";
     }
 

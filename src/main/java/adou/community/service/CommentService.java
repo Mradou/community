@@ -4,10 +4,7 @@ import adou.community.dto.CommentDTO;
 import adou.community.enums.CommentTypeEnum;
 import adou.community.exception.CustomizeErrorCode;
 import adou.community.exception.CustomizeException;
-import adou.community.mapper.CommentMapper;
-import adou.community.mapper.QuestionExtMapper;
-import adou.community.mapper.QuestionMapper;
-import adou.community.mapper.UserMapper;
+import adou.community.mapper.*;
 import adou.community.model.*;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +29,8 @@ public class CommentService {
     private QuestionExtMapper questionExtMapper;
     @Resource
     private UserMapper userMapper;
+    @Resource
+    private CommentExtMapper commentExtMapper;
 
     @Transactional
     public void insert(Comment comment) {
@@ -50,6 +49,12 @@ public class CommentService {
                 throw new CustomizeException(CustomizeErrorCode.COMMENT_NOT_FOUND);
             }
             commentMapper.insert(comment);
+
+            //增加评论数
+            Comment parentComment = new Comment();
+            parentComment.setId(comment.getParentId());
+            parentComment.setCommentCount(1);
+            commentExtMapper.incCommentCount(parentComment);
         } else {
             //回复问题
             Question question = questionMapper.selectByPrimaryKey(comment.getParentId());
@@ -62,11 +67,11 @@ public class CommentService {
         }
     }
 
-    public List<CommentDTO> listByQuestionId(Long id) {
+    public List<CommentDTO> listByTargetId(Long id, CommentTypeEnum type) {
         CommentExample example = new CommentExample();
         example.createCriteria()
                 .andParentIdEqualTo(id)
-                .andTypeEqualTo(CommentTypeEnum.QUESTION.getType());
+                .andTypeEqualTo(type.getType());
         example.setOrderByClause("gmt_create desc");
         List<Comment> comments = commentMapper.selectByExample(example);
         if(comments.size()==0){

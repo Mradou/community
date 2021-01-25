@@ -14,5 +14,6 @@ public class CommentDTO {
     private Integer likeCount;
     private String content;
     private User user;
+    private Integer commentCount;
 }
 
