@@ -28,6 +28,11 @@
                     <span class="text-desc">• <span th:text="${questionDTO.getCommentCount()}">1</span> 个回复
                         • <span th:text="${questionDTO.getViewCount()}">1</span> 次浏览 •
                         <span th:text="${#dates.format(questionDTO.getGmtCreate(),'yyyy-MM-dd')}">日期</span></span>
+                    <a th:href="@{'/publish/'+${questionDTO.id}}" class="community-menu"
+                       th:if="${session.user != null && session.user.id == questionDTO.creator}">
+                        <span class="glyphicon glyphicon-pencil" style="font-size: 13px" aria-hidden="true"></span>
+                        编辑
+                    </a>
                 </div>
             </div>
             <nav aria-label="Page navigation">
