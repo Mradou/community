@@ -73,6 +73,21 @@ CREATE TABLE `community`.`comment`  (
   PRIMARY KEY (`id`)
 );
 ```
+
+[notification表的sql]
+```sql
+CREATE TABLE `community`.`notification`  (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `notifier` bigint NOT NULL COMMENT '通知者(评论别人，点赞别人的人)',
+  `receiver` bigint NOT NULL COMMENT '被通知者',
+  `outer_id` bigint NOT NULL,
+  `type` int NOT NULL COMMENT '区分回复问题或者评论等产生的通知',
+  `gme_create` bigint NOT NULL COMMENT '创建时间',
+  `status` int DEFAULT 0 NOT NULL COMMENT '0未读，1已读',
+  PRIMARY KEY (`id`)
+);
+```
+
 ```bash
 这将运行MBG，并指示其覆盖可能找到的所有现有Java文件
 mvn -Dmybatis.generator.overwrite=true mybatis-generator:generate

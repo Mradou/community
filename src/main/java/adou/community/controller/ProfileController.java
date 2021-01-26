@@ -1,10 +1,9 @@
 package adou.community.controller;
 
 import adou.community.dto.PageDTO;
-import adou.community.mapper.UserMapper;
 import adou.community.model.User;
+import adou.community.service.NotificationService;
 import adou.community.service.QuestionService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
@@ -21,7 +19,8 @@ public class ProfileController {
     @Resource
     private QuestionService questionService;
     @Resource
-    private UserMapper userMapper;
+    private NotificationService notificationService;
+
 
     @GetMapping("/profile/{action}")
     public String profile(@PathVariable(name = "action") String action,
@@ -36,15 +35,20 @@ public class ProfileController {
         }
 
         if ("questions".equals(action)) {
+            //跳转到问题页面
             model.addAttribute("section", "questions");
             model.addAttribute("sectionName", "我的提问");
+            PageDTO pageDTO = questionService.list(user.getId(), currentPage, size);
+            model.addAttribute("pageDTO", pageDTO);
         } else if ("replies".equals(action)) {
+            ////跳转到通知页面
+            PageDTO pageDTO = notificationService.list(user.getId(), currentPage, size);
+            model.addAttribute("pageDTO", pageDTO);
             model.addAttribute("section", "replies");
             model.addAttribute("sectionName", "最新回复");
         }
 
-        PageDTO pageDTO = questionService.listByUid(user.getId(), currentPage, size);
-        model.addAttribute("pageDTO", pageDTO);
+
         return "profile";
     }
 }

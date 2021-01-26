@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Service
 public class QuestionService {
@@ -67,13 +66,13 @@ public class QuestionService {
 
         //将QuestionDTOList和其他需要的东西封装到PageDTO中,并返回
         PageDTO pageDTO = new PageDTO();
-        pageDTO.setQuestionDTOList(questionDTOList);
+        pageDTO.setData(questionDTOList);
         pageDTO.set(totalPage, currentPage, size);
         return pageDTO;
     }
 
 
-    public PageDTO listByUid(Long uid, Integer currentPage, Integer size) {
+    public PageDTO list(Long uid, Integer currentPage, Integer size) {
         //将Question和User封装到QuestionDTOList中，用于展示
         QuestionExample questionExample = new QuestionExample();
         questionExample.createCriteria()
@@ -110,7 +109,7 @@ public class QuestionService {
 
         //将QuestionDTOList和其他需要的东西封装到PageDTO中,并返回
         PageDTO pageDTO = new PageDTO();
-        pageDTO.setQuestionDTOList(questionDTOList);
+        pageDTO.setData(questionDTOList);
         pageDTO.set(totalPage, currentPage, size);
         return pageDTO;
     }

@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Data
-public class PageDTO {
-    private List<QuestionDTO> questionDTOList; //当前页面包含的数据
+public class PageDTO<T> {
+    private List<T> data; //当前页面包含的数据
     private Integer currentPage; //当前所在页面
     private List<Integer> pages = new ArrayList<>(); //当前可以选择前往的页面
     private Integer totalCount; //总记录数
