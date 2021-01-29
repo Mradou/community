@@ -1,5 +1,7 @@
 package adou.community.provider;
 
+import adou.community.exception.CustomizeErrorCode;
+import adou.community.exception.CustomizeException;
 import cn.ucloud.ufile.UfileClient;
 import cn.ucloud.ufile.api.object.ObjectConfig;
 import cn.ucloud.ufile.auth.ObjectAuthorization;
@@ -21,6 +23,7 @@ public class UCloudProvider {
     private String publicKey;
     @Value("${ucloud.ufile.private-key}")
     private String privateKey;
+    private String bucketName = "adou";
 
     //上传文件
     public String upload(InputStream fileStream, String mimeType, String fileName) {
@@ -28,8 +31,8 @@ public class UCloudProvider {
         String[] filePaths = fileName.split("\\.");
         if (filePaths.length > 1) {
             generatedFileName = UUID.randomUUID().toString() + "." + filePaths[filePaths.length - 1];
-        }else {
-            return null;
+        } else {
+            throw new CustomizeException(CustomizeErrorCode.FILE_UPLOAD_ERROR);
         }
         try {
             // Bucket相关API的授权器
@@ -39,18 +42,7 @@ public class UCloudProvider {
             PutObjectResultBean response = UfileClient.object(objectAuthorization, config)
                     .putObject(fileStream, mimeType)
                     .nameAs(generatedFileName)
-                    .toBucket("adou")
-                    /**
-                     * 是否上传校验MD5, Default = true
-                     */
-                    //  .withVerifyMd5(false)
-                    /**
-                     * 指定progress callback的间隔, Default = 每秒回调
-                     */
-                    //  .withProgressConfig(ProgressConfig.callbackWithPercent(10))
-                    /**
-                     * 配置进度监听
-                     */
+                    .toBucket(bucketName)
                     .setOnProgressListener(new OnProgressListener() {
                         @Override
                         public void onProgress(long bytesWritten, long contentLength) {
@@ -58,14 +50,21 @@ public class UCloudProvider {
                         }
                     })
                     .execute();
+            if (response != null && response.getRetCode() == 0) {
+                String url = UfileClient.object(objectAuthorization, config)
+                        .getDownloadUrlFromPrivateBucket(generatedFileName, bucketName, 24 * 60 * 60)
+                        .createUrl();
+                return url;
+            }else {
+                throw new CustomizeException(CustomizeErrorCode.FILE_UPLOAD_ERROR);
+            }
         } catch (UfileClientException e) {
             e.printStackTrace();
-            return null;
+            throw new CustomizeException(CustomizeErrorCode.FILE_UPLOAD_ERROR);
         } catch (UfileServerException e) {
             e.printStackTrace();
-            return null;
+            throw new CustomizeException(CustomizeErrorCode.FILE_UPLOAD_ERROR);
         }
-        return generatedFileName;
     }
 
 }
