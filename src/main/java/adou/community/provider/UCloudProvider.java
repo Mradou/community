@@ -11,7 +11,6 @@ import cn.ucloud.ufile.http.OnProgressListener;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
 import java.io.InputStream;
 import java.util.UUID;
 
