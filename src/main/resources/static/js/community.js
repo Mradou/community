@@ -54,71 +54,6 @@ function collapseComments(e) {
     const id = e.getAttribute("data-id");
     const comments = $("#comment-" + id);
 
-    //获取二级评论的展开状态
-    const flag = e.getAttribute("data-collapse");
-    if (flag) {
-        //折叠二级评论
-        comments.removeClass("in");
-        e.classList.remove("active");//移除css样式
-        e.removeAttribute("data-collapse");
-    } else {
-        const subCommentContainer = $("#comment-" + id);
-        if (subCommentContainer.children().length != 1) {
-            //展开二级评论
-            comments.addClass("in");
-            e.classList.add("active");//添加css样式
-            e.setAttribute("data-collapse", "in");//标记二级评论展开状态
-        } else {
-            $.getJSON("/comment/" + id, function (data) {
-                $.each(data.data.reverse(), function (index, comment) {
-                    const mediaLeftElement = $("<div/>", {
-                        "class": "media-left"
-                    }).append($("<img/>", {
-                        "class": "media-object img-rounded",
-                        "src": comment.user.avatarUrl
-                    }));
-
-                    const mediaBodyElement = $("<div/>", {
-                        "class": "media-body"
-                    }).append($("<h5/>", {
-                        "class": "media-heading",
-                        "html": comment.user.name
-                    })).append($("<div/>", {
-                        "html": comment.content
-                    })).append($("<div/>", {
-                        "class": "menu"
-                    }).append($("<span/>", {
-                        "class": "pull-right",
-                        "html": moment(comment.gmtCreate).format('YYYY-MM-DD')
-                    })));
-
-                    const mediaElement = $("<div/>", {
-                        "class": "media"
-                    }).append(mediaLeftElement).append(mediaBodyElement);
-
-                    const commentElement = $("<div/>", {
-                        "class": "col-lg-12 col-md-12 col-sm-12 col-xs-12 comments"
-                    }).append(mediaElement);
-
-                    subCommentContainer.prepend(commentElement);
-                });
-                //展开二级评论
-                comments.addClass("in");
-                e.classList.add("active");//添加css样式
-                e.setAttribute("data-collapse", "in");//标记二级评论展开状态
-            });
-        }
-    }
-}
-
-/**
- * 展开二级评论
- */
-
-/*function collapseComments(e) {
-    const id = e.getAttribute("data-id");
-    const comments = $("#comment-" + id);
-
     // 获取一下二级评论的展开状态
     const collapse = e.getAttribute("data-collapse");
     if (collapse) {
@@ -155,7 +90,7 @@ function collapseComments(e) {
                         "class": "menu"
                     }).append($("<span/>", {
                         "class": "pull-right",
-                        "html": moment(comment.gmtCreate).format('YYYY-MM-DD')
+                        //"html": moment(comment.gmtCreate).format('YYYY-MM-DD')
                     })));
 
                     const mediaElement = $("<div/>", {
@@ -176,7 +111,7 @@ function collapseComments(e) {
             });
         }
     }
-}*/
+}
 
 /**
  * 对评论提交回复
