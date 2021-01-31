@@ -44,24 +44,24 @@
             <nav aria-label="Page navigation">
                 <ul class="pagination">
                     <li>
-                        <a href="/?currentPage=1" aria-label="Previous" th:if="${pageDTO.showFirst}">
+                        <a th:href="@{/(currentPage=1,search=${search})}" aria-label="Previous" th:if="${pageDTO.showFirst}">
                             <span aria-hidden="true">&lt;&lt;</span>
                         </a>
-                        <a th:href="@{'?currentPage='+${pageDTO.currentPage -1}}" aria-label="Previous"
+                        <a th:href="@{/(currentPage=${pageDTO.currentPage -1},search = ${search})}" aria-label="Previous"
                            th:if="${pageDTO.showPre}">
                             <span aria-hidden="true">&lt;</span>
                         </a>
                     </li>
                     <li th:each="currentPage:${pageDTO.pages}"
                         th:classappend="${pageDTO.currentPage==currentPage}?'active':''">
-                        <a th:href="@{'?currentPage='+${currentPage}}" th:text="${currentPage}">页码</a>
+                        <a th:href="@{/(currentPage=${currentPage},search=${search})}" th:text="${currentPage}">页码</a>
                     </li>
                     <li>
-                        <a th:href="@{'?currentPage='+${pageDTO.currentPage+1}}" aria-label="Next"
+                        <a th:href="@{/(currentPage=${pageDTO.currentPage+1},search=${search})}" aria-label="Next"
                            th:if="${pageDTO.showNext}">
                             <span aria-hidden="true">&gt;</span>
                         </a>
-                        <a th:href="@{'?currentPage='+${pageDTO.totalPage}}" aria-label="Next"
+                        <a th:href="@{/(currentPage=${pageDTO.totalPage},search=${search})}" aria-label="Next"
                            th:if="${pageDTO.showEnd}">
                             <span aria-hidden="true">&gt;&gt;</span>
                         </a>

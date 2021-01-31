@@ -2,6 +2,7 @@ package adou.community.service;
 
 import adou.community.dto.PageDTO;
 import adou.community.dto.QuestionDTO;
+import adou.community.dto.QuestionQueryDTO;
 import adou.community.exception.CustomizeErrorCode;
 import adou.community.exception.CustomizeException;
 import adou.community.mapper.QuestionExtMapper;
@@ -32,10 +33,17 @@ public class QuestionService {
     @Resource
     private QuestionExtMapper questionExtMapper;
 
-    public PageDTO list(Integer currentPage, Integer size) {
+    public PageDTO list(String search,Integer currentPage, Integer size) {
+
+        if(StringUtils.isNotBlank(search)){
+            String[] tags = StringUtils.split(search, "");
+            search = Arrays.stream(tags).collect(Collectors.joining("|"));
+        }
 
         //将Question和User封装到QuestionDTOList中，用于展示
-        Integer totalCount = (int) questionMapper.countByExample(new QuestionExample()); //总条数
+        QuestionQueryDTO questionQueryDTO = new QuestionQueryDTO();
+        questionQueryDTO.setSearch(search);
+        Integer totalCount = questionExtMapper.countBySearch(questionQueryDTO); //总条数
         Integer totalPage;//总页数
         //计算总页数
         if (totalCount % size == 0) {
@@ -54,7 +62,9 @@ public class QuestionService {
         Integer offset = size * (currentPage - 1); //查询的起始数据序号 0开始
         QuestionExample questionExample = new QuestionExample();
         questionExample.setOrderByClause("gmt_create desc");
-        List<Question> questionList = questionMapper.selectByExampleWithRowbounds(questionExample, new RowBounds(offset, size));//分页查询
+        questionQueryDTO.setPage(offset);
+        questionQueryDTO.setSize(size);
+        List<Question> questionList = questionExtMapper.selectBySearch(questionQueryDTO);//分页查询
         List<QuestionDTO> questionDTOList = new ArrayList<>();
         for (Question question : questionList) {
             User user = userMapper.selectByPrimaryKey(question.getCreator());
