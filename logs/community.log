@@ -1,0 +1,100 @@
+2021-02-01 20:13:47.492  INFO 10864 --- [restartedMain] adou.community.CommunityApplication      : Starting CommunityApplication using Java 9.0.4 on CHINA-20190402H with PID 10864 (D:\JavaProjectRoot\SpringBoot\community\target\classes started by Administrator in D:\JavaProjectRoot\SpringBoot\community)
+2021-02-01 20:13:47.495  INFO 10864 --- [restartedMain] adou.community.CommunityApplication      : No active profile set, falling back to default profiles: default
+2021-02-01 20:13:47.565  INFO 10864 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-02-01 20:13:47.565  INFO 10864 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-02-01 20:13:47.602  WARN 10864 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2021-02-01 20:13:49.315  INFO 10864 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2021-02-01 20:13:49.329  INFO 10864 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-02-01 20:13:49.329  INFO 10864 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-02-01 20:13:49.509  INFO 10864 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-02-01 20:13:49.510  INFO 10864 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1943 ms
+2021-02-01 20:13:50.134  INFO 10864 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-02-01 20:13:50.208  INFO 10864 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-02-01 20:13:50.895  INFO 10864 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-02-01 20:13:50.966  INFO 10864 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2021-02-01 20:13:50.996  INFO 10864 --- [restartedMain] adou.community.CommunityApplication      : Started CommunityApplication in 4.13 seconds (JVM running for 5.598)
+2021-02-01 20:13:55.949  INFO 10864 --- [http-nio-80-exec-10] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-02-01 20:13:55.957  INFO 10864 --- [http-nio-80-exec-10] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-02-01 20:13:55.961  INFO 10864 --- [http-nio-80-exec-10] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2021-02-01 20:13:56.087  INFO 10864 --- [http-nio-80-exec-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-02-01 20:13:56.474  INFO 10864 --- [http-nio-80-exec-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-02-01 20:13:56.480 DEBUG 10864 --- [http-nio-80-exec-10] a.c.mapper.UserMapper.selectByExample    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, avatar_url from user WHERE ( token = ? ) 
+2021-02-01 20:13:56.497 DEBUG 10864 --- [http-nio-80-exec-10] a.c.mapper.UserMapper.selectByExample    : ==> Parameters: 0d51bd6a-088c-465d-8b4b-4d11ab6dac92(String)
+2021-02-01 20:13:56.510 DEBUG 10864 --- [http-nio-80-exec-10] a.c.mapper.UserMapper.selectByExample    : <==      Total: 1
+2021-02-01 20:13:57.290  WARN 10864 --- [http-nio-80-exec-10] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [772] milliseconds.
+2021-02-01 20:13:57.296 DEBUG 10864 --- [http-nio-80-exec-10] a.c.m.NotificationMapper.countByExample  : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2021-02-01 20:13:57.297 DEBUG 10864 --- [http-nio-80-exec-10] a.c.m.NotificationMapper.countByExample  : ==> Parameters: 1(Long), 0(Integer)
+2021-02-01 20:13:57.299 DEBUG 10864 --- [http-nio-80-exec-10] a.c.m.NotificationMapper.countByExample  : <==      Total: 1
+2021-02-01 20:13:57.325 DEBUG 10864 --- [http-nio-80-exec-10] a.c.m.QuestionExtMapper.countBySearch    : ==>  Preparing: select count(*) from question 
+2021-02-01 20:13:57.326 DEBUG 10864 --- [http-nio-80-exec-10] a.c.m.QuestionExtMapper.countBySearch    : ==> Parameters: 
+2021-02-01 20:13:57.332 DEBUG 10864 --- [http-nio-80-exec-10] a.c.m.QuestionExtMapper.countBySearch    : <==      Total: 1
+2021-02-01 20:13:57.333 DEBUG 10864 --- [http-nio-80-exec-10] a.c.m.QuestionExtMapper.selectBySearch   : ==>  Preparing: select * from question order by gmt_create desc limit ?,? 
+2021-02-01 20:13:57.334 DEBUG 10864 --- [http-nio-80-exec-10] a.c.m.QuestionExtMapper.selectBySearch   : ==> Parameters: 0(Integer), 5(Integer)
+2021-02-01 20:13:57.340 DEBUG 10864 --- [http-nio-80-exec-10] a.c.m.QuestionExtMapper.selectBySearch   : <==      Total: 5
+2021-02-01 20:13:57.341 DEBUG 10864 --- [http-nio-80-exec-10] a.c.m.UserMapper.selectByPrimaryKey      : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, avatar_url from user where id = ? 
+2021-02-01 20:13:57.342 DEBUG 10864 --- [http-nio-80-exec-10] a.c.m.UserMapper.selectByPrimaryKey      : ==> Parameters: 1(Long)
+2021-02-01 20:13:57.344 DEBUG 10864 --- [http-nio-80-exec-10] a.c.m.UserMapper.selectByPrimaryKey      : <==      Total: 1
+2021-02-01 20:13:57.350 DEBUG 10864 --- [http-nio-80-exec-10] a.c.m.UserMapper.selectByPrimaryKey      : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, avatar_url from user where id = ? 
+2021-02-01 20:13:57.352 DEBUG 10864 --- [http-nio-80-exec-10] a.c.m.UserMapper.selectByPrimaryKey      : ==> Parameters: 1(Long)
+2021-02-01 20:13:57.355 DEBUG 10864 --- [http-nio-80-exec-10] a.c.m.UserMapper.selectByPrimaryKey      : <==      Total: 1
+2021-02-01 20:13:57.355 DEBUG 10864 --- [http-nio-80-exec-10] a.c.m.UserMapper.selectByPrimaryKey      : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, avatar_url from user where id = ? 
+2021-02-01 20:13:57.356 DEBUG 10864 --- [http-nio-80-exec-10] a.c.m.UserMapper.selectByPrimaryKey      : ==> Parameters: 1(Long)
+2021-02-01 20:13:57.357 DEBUG 10864 --- [http-nio-80-exec-10] a.c.m.UserMapper.selectByPrimaryKey      : <==      Total: 1
+2021-02-01 20:13:57.359 DEBUG 10864 --- [http-nio-80-exec-10] a.c.m.UserMapper.selectByPrimaryKey      : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, avatar_url from user where id = ? 
+2021-02-01 20:13:57.359 DEBUG 10864 --- [http-nio-80-exec-10] a.c.m.UserMapper.selectByPrimaryKey      : ==> Parameters: 1(Long)
+2021-02-01 20:13:57.360 DEBUG 10864 --- [http-nio-80-exec-10] a.c.m.UserMapper.selectByPrimaryKey      : <==      Total: 1
+2021-02-01 20:13:57.360 DEBUG 10864 --- [http-nio-80-exec-10] a.c.m.UserMapper.selectByPrimaryKey      : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, avatar_url from user where id = ? 
+2021-02-01 20:13:57.361 DEBUG 10864 --- [http-nio-80-exec-10] a.c.m.UserMapper.selectByPrimaryKey      : ==> Parameters: 1(Long)
+2021-02-01 20:13:57.362 DEBUG 10864 --- [http-nio-80-exec-10] a.c.m.UserMapper.selectByPrimaryKey      : <==      Total: 1
+2021-02-01 20:13:59.007 DEBUG 10864 --- [http-nio-80-exec-9] a.c.mapper.UserMapper.selectByExample    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, avatar_url from user WHERE ( token = ? ) 
+2021-02-01 20:13:59.009 DEBUG 10864 --- [http-nio-80-exec-9] a.c.mapper.UserMapper.selectByExample    : ==> Parameters: 0d51bd6a-088c-465d-8b4b-4d11ab6dac92(String)
+2021-02-01 20:13:59.011 DEBUG 10864 --- [http-nio-80-exec-9] a.c.mapper.UserMapper.selectByExample    : <==      Total: 1
+2021-02-01 20:13:59.013 DEBUG 10864 --- [http-nio-80-exec-9] a.c.m.NotificationMapper.countByExample  : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2021-02-01 20:13:59.014 DEBUG 10864 --- [http-nio-80-exec-9] a.c.m.NotificationMapper.countByExample  : ==> Parameters: 1(Long), 0(Integer)
+2021-02-01 20:13:59.015 DEBUG 10864 --- [http-nio-80-exec-9] a.c.m.NotificationMapper.countByExample  : <==      Total: 1
+2021-02-01 20:13:59.078 DEBUG 10864 --- [http-nio-80-exec-8] a.c.mapper.UserMapper.selectByExample    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, avatar_url from user WHERE ( token = ? ) 
+2021-02-01 20:13:59.079 DEBUG 10864 --- [http-nio-80-exec-8] a.c.mapper.UserMapper.selectByExample    : ==> Parameters: 0d51bd6a-088c-465d-8b4b-4d11ab6dac92(String)
+2021-02-01 20:13:59.080 DEBUG 10864 --- [http-nio-80-exec-8] a.c.mapper.UserMapper.selectByExample    : <==      Total: 1
+2021-02-01 20:13:59.081 DEBUG 10864 --- [http-nio-80-exec-8] a.c.m.NotificationMapper.countByExample  : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2021-02-01 20:13:59.082 DEBUG 10864 --- [http-nio-80-exec-8] a.c.m.NotificationMapper.countByExample  : ==> Parameters: 1(Long), 0(Integer)
+2021-02-01 20:13:59.082 DEBUG 10864 --- [http-nio-80-exec-8] a.c.m.NotificationMapper.countByExample  : <==      Total: 1
+2021-02-01 20:13:59.100 DEBUG 10864 --- [http-nio-80-exec-7] a.c.mapper.UserMapper.selectByExample    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, avatar_url from user WHERE ( token = ? ) 
+2021-02-01 20:13:59.100 DEBUG 10864 --- [http-nio-80-exec-7] a.c.mapper.UserMapper.selectByExample    : ==> Parameters: 0d51bd6a-088c-465d-8b4b-4d11ab6dac92(String)
+2021-02-01 20:13:59.101 DEBUG 10864 --- [http-nio-80-exec-7] a.c.mapper.UserMapper.selectByExample    : <==      Total: 1
+2021-02-01 20:13:59.103 DEBUG 10864 --- [http-nio-80-exec-7] a.c.m.NotificationMapper.countByExample  : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2021-02-01 20:13:59.104 DEBUG 10864 --- [http-nio-80-exec-7] a.c.m.NotificationMapper.countByExample  : ==> Parameters: 1(Long), 0(Integer)
+2021-02-01 20:13:59.106 DEBUG 10864 --- [http-nio-80-exec-7] a.c.m.NotificationMapper.countByExample  : <==      Total: 1
+2021-02-01 20:13:59.127 DEBUG 10864 --- [http-nio-80-exec-6] a.c.mapper.UserMapper.selectByExample    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, avatar_url from user WHERE ( token = ? ) 
+2021-02-01 20:13:59.128 DEBUG 10864 --- [http-nio-80-exec-6] a.c.mapper.UserMapper.selectByExample    : ==> Parameters: 0d51bd6a-088c-465d-8b4b-4d11ab6dac92(String)
+2021-02-01 20:13:59.130 DEBUG 10864 --- [http-nio-80-exec-6] a.c.mapper.UserMapper.selectByExample    : <==      Total: 1
+2021-02-01 20:13:59.132 DEBUG 10864 --- [http-nio-80-exec-6] a.c.m.NotificationMapper.countByExample  : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2021-02-01 20:13:59.132 DEBUG 10864 --- [http-nio-80-exec-6] a.c.m.NotificationMapper.countByExample  : ==> Parameters: 1(Long), 0(Integer)
+2021-02-01 20:13:59.133 DEBUG 10864 --- [http-nio-80-exec-6] a.c.m.NotificationMapper.countByExample  : <==      Total: 1
+2021-02-01 20:13:59.168 DEBUG 10864 --- [http-nio-80-exec-5] a.c.mapper.UserMapper.selectByExample    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, avatar_url from user WHERE ( token = ? ) 
+2021-02-01 20:13:59.169 DEBUG 10864 --- [http-nio-80-exec-5] a.c.mapper.UserMapper.selectByExample    : ==> Parameters: 0d51bd6a-088c-465d-8b4b-4d11ab6dac92(String)
+2021-02-01 20:13:59.170 DEBUG 10864 --- [http-nio-80-exec-5] a.c.mapper.UserMapper.selectByExample    : <==      Total: 1
+2021-02-01 20:13:59.171 DEBUG 10864 --- [http-nio-80-exec-5] a.c.m.NotificationMapper.countByExample  : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2021-02-01 20:13:59.172 DEBUG 10864 --- [http-nio-80-exec-5] a.c.m.NotificationMapper.countByExample  : ==> Parameters: 1(Long), 0(Integer)
+2021-02-01 20:13:59.172 DEBUG 10864 --- [http-nio-80-exec-5] a.c.m.NotificationMapper.countByExample  : <==      Total: 1
+2021-02-01 20:14:03.458 DEBUG 10864 --- [http-nio-80-exec-1] a.c.mapper.UserMapper.selectByExample    : ==>  Preparing: select id, account_id, name, token, gmt_create, gmt_modified, avatar_url from user WHERE ( token = ? ) 
+2021-02-01 20:14:03.458 DEBUG 10864 --- [http-nio-80-exec-1] a.c.mapper.UserMapper.selectByExample    : ==> Parameters: 0d51bd6a-088c-465d-8b4b-4d11ab6dac92(String)
+2021-02-01 20:14:03.460 DEBUG 10864 --- [http-nio-80-exec-1] a.c.mapper.UserMapper.selectByExample    : <==      Total: 1
+2021-02-01 20:14:03.461 DEBUG 10864 --- [http-nio-80-exec-1] a.c.m.NotificationMapper.countByExample  : ==>  Preparing: select count(*) from notification WHERE ( receiver = ? and status = ? ) 
+2021-02-01 20:14:03.461 DEBUG 10864 --- [http-nio-80-exec-1] a.c.m.NotificationMapper.countByExample  : ==> Parameters: 1(Long), 0(Integer)
+2021-02-01 20:14:03.462 DEBUG 10864 --- [http-nio-80-exec-1] a.c.m.NotificationMapper.countByExample  : <==      Total: 1
+2021-02-01 20:15:27.900  INFO 10864 --- [Thread-5] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2021-02-01 20:15:27.901  INFO 10864 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2021-02-01 20:15:27.908  INFO 10864 --- [Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2021-02-01 20:15:28.146  INFO 10864 --- [restartedMain] adou.community.CommunityApplication      : Starting CommunityApplication using Java 9.0.4 on CHINA-20190402H with PID 10864 (D:\JavaProjectRoot\SpringBoot\community\target\classes started by Administrator in D:\JavaProjectRoot\SpringBoot\community)
+2021-02-01 20:15:28.147  INFO 10864 --- [restartedMain] adou.community.CommunityApplication      : No active profile set, falling back to default profiles: default
+2021-02-01 20:15:28.673  INFO 10864 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2021-02-01 20:15:28.674  INFO 10864 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-02-01 20:15:28.674  INFO 10864 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.39]
+2021-02-01 20:15:28.716  INFO 10864 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-02-01 20:15:28.716  INFO 10864 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 566 ms
+2021-02-01 20:15:29.061  INFO 10864 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-02-01 20:15:29.081  INFO 10864 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-02-01 20:15:29.157  INFO 10864 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-02-01 20:15:29.179  INFO 10864 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2021-02-01 20:15:29.183  INFO 10864 --- [restartedMain] adou.community.CommunityApplication      : Started CommunityApplication in 1.122 seconds (JVM running for 103.785)
+2021-02-01 20:15:29.185  INFO 10864 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged

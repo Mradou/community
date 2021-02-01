@@ -3,8 +3,17 @@ server:
 
 logging:
   level:
+    root:
+      info
     adou.community.mapper:
-     debug
+      debug
+
+  file:
+    name:
+      logs/community.log
+    max-size: 100MB
+    max-history: 15
+
 
 mybatis:
   mapper-locations: classpath:/mybatis/mapper/*.xml
